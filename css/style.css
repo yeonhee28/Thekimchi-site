@@ -1,0 +1,241 @@
+/* 전체 선택자 */
+* {
+    margin: 0;
+    padding: 0;
+    /* 매번 안해줘도됨 */
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+
+    /* 인라인 요소를 블록 요소로 */
+    display: block;
+}
+
+img {
+    /* 부모 크기에 맞추기 */
+    width: 100%;
+}
+
+.wrap {
+    width: 100%;
+}
+
+header {
+    width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+    padding-top: 60px;
+
+    /* 자식 객체들을 가로로 나열 */
+    display: flex;
+    /* 양사이드 여백X -> space-between */
+    justify-content: space-between;
+    /* background-color: gold; */
+}
+
+/* 하위 선택자 */
+header .logo {
+    width: 140px;
+}
+
+header nav {
+    width: 500px;
+}
+
+/* 자식 선택자 (>) */
+header nav>ul {
+    /* 주메뉴만 가로로 균등 배치 */
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav>ul>li>a {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header nav>ul>li {
+    /* 자식 객체의 .sub 위치를 설정할 때 기준은 li가 됨*/
+    /* .sub의 자식객체는 li */
+    position: relative;
+}
+
+/* 주메뉴에 마우스 오버했을 때 글자색 변경 */
+header nav>ul>li>a:hover {
+    color: #999;
+}
+
+/* 서브메뉴 */
+header nav .sub {
+    /* 애니메이션하려면 display none못함 */
+    /* display: none; */
+    /* 초깃값 */
+    opacity: 0;
+    transition: all 0.2s;
+    /* 안보임 */
+    visibility: hidden;
+
+    width: 130px;
+    padding: 20px;
+    background-color: #333;
+
+    /* 주메뉴 < 서브메뉴 해결 */
+    /* position값이 absolate일 때 가로 가운데 정렬하기 */
+    /* 문제 : 근처만 가도 보임 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header nav .sub li a {
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    /* 마우스 오버시 애니메이션 */
+    transition: all 0.5s;
+}
+
+header nav .sub li a:hover {
+    color: #aaa;
+}
+
+/* 주메뉴에 마우스 오버했을 때 서브메뉴 보임 */
+header nav>ul>li:hover .sub {
+    /* display:block; */
+    opacity: 1;
+    /* 보임 */
+    visibility: visible;
+}
+
+/* .side_manu 영역 스타일 */
+
+header .side_menu {
+    width: 250px;
+}
+
+header .side_menu ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .side_menu ul li a {
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 22px;
+}
+
+header .side_menu ul li a:hover {
+    color: #aaa;
+}
+
+header .side_menu ul li:last-child a {
+    position: relative;
+}
+
+/* 장바구니 0 겹치기 */
+header .side_menu ul li:last-child a::before {
+    content: "0";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    color: #fff;
+}
+
+/* main slide */
+section {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+section .banner {
+    width: 100%;
+    margin-top: 60px;
+}
+
+section .banner ul {
+    height: 1400px;
+    display: flex;
+    /* 열기준, 줄바꿈 허용 */
+    flex-flow: column wrap;
+    align-content: space-between;
+}
+
+section .banner ul li {
+    width: 32%;
+    padding: 10px;
+    background-color: #eee;
+    margin-bottom: 30px;
+}
+
+section .banner ul li h3 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    /* 글자의 굵기를 보통으로 설정 */
+    font-weight: normal;
+}
+
+section .banner ul li p {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 60px 0;
+}
+
+footer .center_box {
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    /* 기본 값 */
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+footer .user ul li {
+    margin: 10px 0;
+}
+
+/* 이용약관(user)영역의 개인정보보호방침(PRIVACY POLICY)만 글자 진하게 */
+footer .user ul li:nth-child(3) a {
+    font-weight: bold;
+    color: #111;
+}
+
+/* footer의 글씨크기 통일 - 하위 선택자(띄어쓰기), 그룹선택자(,) */
+footer h4,
+footer a,
+footer p,
+footer address {
+    font-size: 12px;
+    font-weight: normal;
+    /* 기울어지지 않게 */
+    font-style: normal;
+    color: #666;
+    line-height: 22px;
+}
+footer span {
+    font-size: 15px;
+    line-height: 22px;
+}
+
+footer h4 {
+    margin-bottom: 10px;
+}
+footer .company h4 {
+    margin-bottom: 20px;
+} 
+footer .cs, footer address {
+    margin-bottom: 40px;
+}
